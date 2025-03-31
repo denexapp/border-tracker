@@ -7,12 +7,9 @@ export default async function Page() {
   await validateSession();
 
   return (
-    <div className="flex flex-col gap-6 row-start-2 items-center">
-      <H1>border tracker</H1>
-      <div className="flex flex-col gap-4">
-        <Button onClick={addEntry}>add arrival</Button>
-        <Button onClick={addEntry}>add departure</Button>
-      </div>
+    <div className="flex flex-col gap-4">
+      <Button onClick={addEntry}>add arrival</Button>
+      <Button onClick={addEntry}>add departure</Button>
     </div>
   );
 }

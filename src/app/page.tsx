@@ -5,9 +5,7 @@ export default async function Page() {
   return (
     <div className="flex flex-col gap-6 items-center justify-center">
       <H1>border tracker</H1>
-      <div className="flex flex-col gap-4">
-        <ButtonLink href="/track">track</ButtonLink>
-      </div>
+      <ButtonLink href="/track">track</ButtonLink>
     </div>
   );
 }
