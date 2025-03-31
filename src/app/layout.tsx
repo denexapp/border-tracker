@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 import "./globals.css";
 import User from "@/components/user";
-import Text from "@/components/text";
 import Paper from "@/components/paper";
 import ButtonLink from "@/components/buttonLink";
 

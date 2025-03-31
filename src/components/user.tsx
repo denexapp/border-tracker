@@ -14,7 +14,7 @@ const User: FC = async () => {
 
   return (
     <div className="flex gap-2 items-center">
-      <Text>{session.user?.name || "unknown user"}</Text>
+      <Text>{session.user?.login || "unknown user"}</Text>
       <Button onClick={signOut}>sign out</Button>
     </div>
   );

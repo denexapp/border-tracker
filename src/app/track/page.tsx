@@ -1,13 +1,17 @@
+import addEntry from "@/actions/addEntry";
+import { validateSession } from "@/auth";
 import Button from "@/components/button";
 import H1 from "@/components/h1";
 
-export default function Page() {
+export default async function Page() {
+  await validateSession();
+
   return (
     <div className="flex flex-col gap-6 row-start-2 items-center">
       <H1>border tracker</H1>
       <div className="flex flex-col gap-4">
-        <Button>add arrival</Button>
-        <Button>add departure</Button>
+        <Button onClick={addEntry}>add arrival</Button>
+        <Button onClick={addEntry}>add departure</Button>
       </div>
     </div>
   );

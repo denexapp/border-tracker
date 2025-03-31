@@ -3,9 +3,7 @@
 import { signOut as nextAuthSignOut } from "@/auth";
 
 const signOut = async () => {
-  await nextAuthSignOut({
-    redirectTo: "/",
-  });
+  await nextAuthSignOut();
 };
 
 export default signOut;
