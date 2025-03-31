@@ -13,6 +13,7 @@
   --color-primary-text: var(--color-neutral-50);
   --color-bg: light-dark(var(--color-white), var(--color-black));
   --color-text: light-dark(var(--color-neutral-950), var(--color-neutral-50));
+  --color-paper-border: light-dark(var(--color-sky-500), var(--color-sky-600));
 }
 
 body {

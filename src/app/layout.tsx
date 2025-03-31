@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 import "./globals.css";
+import User from "@/components/user";
+import Text from "@/components/text";
+import Paper from "@/components/paper";
+import ButtonLink from "@/components/buttonLink";
 
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",
@@ -8,7 +12,7 @@ const notoSans = Noto_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Border Tracker",
+  title: "border tracker",
   description: "An app to track border crossings",
 };
 
@@ -19,7 +23,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${notoSans.className} antialiased min-h-svh grid`}>{children}</body>
+      <body className={`${notoSans.className} antialiased min-h-svh grid grid-rows-[auto_1fr] gap-2 p-2`}>
+        <Paper>
+          <div className="flex gap-2 items-center justify-between p-2">
+            <ButtonLink href="/">border tracker</ButtonLink>
+            <User />
+          </div>
+        </Paper>
+        <Paper>{children}</Paper>
+      </body>
     </html>
   );
 }
