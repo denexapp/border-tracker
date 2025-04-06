@@ -3,7 +3,7 @@ import Button from "@/components/button";
 import H1 from "@/components/h1";
 import { FC } from "react";
 
-const Page: FC = async () => {
+const Page: FC = () => {
   return (
     <div className="flex flex-col gap-6 items-center justify-center p-2">
       <H1>border tracker</H1>

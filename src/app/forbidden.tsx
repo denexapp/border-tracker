@@ -4,7 +4,7 @@ import { FC } from "react";
 const Page: FC = () => {
   return (
     <div className="grid place-items-center p-2">
-      <Text>you are not authorized to see this page</Text>
+      <Text>you are not authorized</Text>
     </div>
   );
 };
