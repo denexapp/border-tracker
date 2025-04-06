@@ -1,6 +1,7 @@
 "use server";
 
 import { propertyNameType, propertyValueIdTypeArrival, propertyValueIdTypeDeparture } from "@/consts";
+import { EntryType } from "@/models/entryType/extractors/type";
 import notion from "@/notion";
 import encodeUrlParams from "@/utils/encodeUrlParams";
 import { revalidatePath } from "next/cache";
