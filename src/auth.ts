@@ -1,6 +1,6 @@
 // The `JWT` interface can be found in the `next-auth/jwt` submodule
 import "next-auth/jwt";
-import { unauthorized } from "next/navigation";
+import { forbidden, unauthorized } from "next/navigation";
 import { alllowedGithubUserIds } from "./consts";
 import NextAuth from "next-auth";
 import GitHub, { GitHubProfile } from "next-auth/providers/github";
@@ -45,10 +45,10 @@ export const validateSession = async () => {
   const { user } = session;
 
   if (user === undefined) {
-    unauthorized();
+    forbidden();
   }
   if (!alllowedGithubUserIds.includes(user.userId)) {
-    unauthorized();
+    forbidden();
   }
 };
 

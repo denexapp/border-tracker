@@ -12,7 +12,7 @@ const notoSans = Noto_Sans({
 
 export const metadata: Metadata = {
   title: "border tracker",
-  description: "An app to track border crossings",
+  description: "an app to track border crossings",
 };
 
 export default function RootLayout({
