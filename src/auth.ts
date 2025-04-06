@@ -18,6 +18,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           image: profile.avatar_url,
         };
       },
+      authorization: {
+        params: {
+          prompt: "select_account",
+        },
+      },
     }),
   ],
   callbacks: {
