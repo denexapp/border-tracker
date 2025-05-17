@@ -7,6 +7,7 @@ import { FC, ReactNode } from "react";
 import { getEntry } from "../../../models/entryType/getEntry";
 import { FieldComponent } from "./_fields/fieldComponent";
 import Type from "./_fields/type";
+import Date from "./_fields/date";
 
 interface PageProps {
   params: Promise<{
@@ -16,6 +17,7 @@ interface PageProps {
 
 const fieldComponents: Record<EntryKey, FieldComponent> = {
   type: Type,
+  date: Date,
 };
 
 const Page: FC<PageProps> = async (props) => {

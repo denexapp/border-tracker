@@ -8,5 +8,6 @@ export const getEntry = (page: GetPageResponse): Entry => {
 
   return {
     type: entryFieldExtractors.type(page),
+    date: entryFieldExtractors.date(page),
   };
 };

@@ -1,5 +1,5 @@
 import updateEntryType from "@/actions/updateEntryTypeAndRevalidate";
-import Button from "@/components/button";
+import ButtonForm from "@/components/buttonForm";
 import H1 from "@/components/h1";
 import { FieldComponent } from "./fieldComponent";
 
@@ -13,8 +13,8 @@ const Type: FieldComponent = async (props) => {
     <div className="flex flex-col gap-6 items-center">
       <H1>select entry type</H1>
       <div className="flex flex-col gap-4">
-        <Button onClick={setEntryTypeArrival}>arrival</Button>
-        <Button onClick={setEntryTypeDeparture}>departure</Button>
+        <ButtonForm onClick={setEntryTypeArrival}>arrival</ButtonForm>
+        <ButtonForm onClick={setEntryTypeDeparture}>departure</ButtonForm>
       </div>
     </div>
   );
