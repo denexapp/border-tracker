@@ -12,7 +12,7 @@ const estimateUserDate = async (): Promise<SimpleDate | null> => {
   }
 
   const dateTimeFormat = new Intl.DateTimeFormat(undefined, {
-    numberingSystem: "arab",
+    numberingSystem: "latn",
     calendar: "gregory",
     timeZone,
     year: "numeric",
