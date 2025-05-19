@@ -11,6 +11,8 @@ const estimateUserDate = async (): Promise<SimpleDate | null> => {
     return null;
   }
 
+  console.debug("Vercel ip timezone header:", timeZone);
+
   const dateTimeFormat = new Intl.DateTimeFormat(undefined, {
     numberingSystem: "latn",
     calendar: "gregory",
