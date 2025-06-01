@@ -2,12 +2,13 @@ import { validateSession } from "@/auth";
 import Text from "@/components/text";
 import { EntryKey } from "@/models/entryType/entry";
 import { getUnfilledEntryKey } from "@/models/entryType/getUnfilledEntryKey";
-import notion from "@/notion";
+import notion from "@/notion/client";
 import { FC, ReactNode } from "react";
 import { getEntry } from "../../../models/entryType/getEntry";
-import { FieldComponent } from "./_fields/fieldComponent";
-import Type from "./_fields/type";
 import Date from "./_fields/date";
+import { FieldComponent } from "./_fields/fieldComponent";
+import Region from "./_fields/region";
+import Type from "./_fields/type";
 
 interface PageProps {
   params: Promise<{
@@ -18,6 +19,7 @@ interface PageProps {
 const fieldComponents: Record<EntryKey, FieldComponent> = {
   type: Type,
   date: Date,
+  region: Region,
 };
 
 const Page: FC<PageProps> = async (props) => {
@@ -29,7 +31,7 @@ const Page: FC<PageProps> = async (props) => {
     page_id: entryId,
   });
 
-  const entry = getEntry(page);
+  const entry = await getEntry(page);
   const unfilledEntryKey = getUnfilledEntryKey(entry);
 
   let content: ReactNode;

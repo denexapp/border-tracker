@@ -2,7 +2,7 @@
 
 import { validateSession } from "@/auth";
 import { databaseIdBorderCrossings } from "@/consts";
-import notion from "@/notion";
+import notion from "@/notion/client";
 import encodeUrlParams from "@/utils/encodeUrlParams";
 import { redirect } from "next/navigation";
 
