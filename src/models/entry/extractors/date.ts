@@ -2,9 +2,7 @@ import { propertyNameDate } from "@/consts";
 import { SimpleDate } from "@/models/simpleDate/simpleDate";
 import { EntryFieldExtractor } from "../entryFieldExtractor";
 
-export type EntryDate = SimpleDate;
-
-export const date: EntryFieldExtractor<EntryDate> = (page) => {
+export const date: EntryFieldExtractor<SimpleDate> = (page) => {
   const entryTypeProperty = page.properties[propertyNameDate];
 
   if (entryTypeProperty === undefined) {

@@ -1,8 +1,8 @@
-import { SimpleRegion } from "@/models/simpleRegion/simpleRegion";
-import simpleRegionFromRegionCode from "@/models/simpleRegion/simpleRegionFromRegionCode";
+import { Region } from "@/models/region/region";
+import regionFromRegionCode from "@/models/region/regionFromRegionCode";
 import { headers } from "next/headers";
 
-const estimateUserRegion = async (): Promise<SimpleRegion | null> => {
+const estimateUserRegion = async (): Promise<Region | null> => {
   const requestHeaders = await headers();
 
   const estimatedUserRegionCode = requestHeaders.get("x-vercel-ip-country");
@@ -14,7 +14,7 @@ const estimateUserRegion = async (): Promise<SimpleRegion | null> => {
 
   console.debug("Vercel ip country header:", estimatedUserRegionCode);
 
-  const estimatedUserRegion = simpleRegionFromRegionCode(estimatedUserRegionCode);
+  const estimatedUserRegion = regionFromRegionCode(estimatedUserRegionCode);
 
   if (estimatedUserRegion === null) {
     console.debug("Failed to parse region from code:", estimatedUserRegionCode);

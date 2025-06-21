@@ -1,13 +1,13 @@
 import { EntryFieldExtractor } from "./entryFieldExtractor";
 import { date } from "./extractors/date";
 import { region } from "./extractors/region";
-import { type } from "./extractors/type";
+import { direction } from "./extractors/direction";
 
-export const entryFieldKeys = ["type", "date", "region"] as const;
+export const entryFieldKeys = ["direction", "date", "region"] as const;
 export type EntryKey = (typeof entryFieldKeys)[number];
 
 export const entryFieldExtractors = {
-  type,
+  direction,
   date,
   region,
 } as const satisfies Record<EntryKey, EntryFieldExtractor<unknown>>;

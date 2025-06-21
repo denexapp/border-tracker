@@ -1,14 +1,14 @@
 import { validateSession } from "@/auth";
 import Text from "@/components/text";
-import { EntryKey } from "@/models/entryType/entry";
-import { getUnfilledEntryKey } from "@/models/entryType/getUnfilledEntryKey";
+import { EntryKey } from "@/models/entry/entry";
+import { getUnfilledEntryKey } from "@/models/entry/getUnfilledEntryKey";
 import notion from "@/notion/client";
 import { FC, ReactNode } from "react";
-import { getEntry } from "../../../models/entryType/getEntry";
+import { getEntry } from "../../../models/entry/getEntry";
 import Date from "./_fields/date";
 import { FieldComponent } from "./_fields/fieldComponent";
 import Region from "./_fields/region";
-import Type from "./_fields/type";
+import Direction from "./_fields/direction";
 
 interface PageProps {
   params: Promise<{
@@ -17,7 +17,7 @@ interface PageProps {
 }
 
 const fieldComponents: Record<EntryKey, FieldComponent> = {
-  type: Type,
+  direction: Direction,
   date: Date,
   region: Region,
 };

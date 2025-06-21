@@ -1,12 +1,12 @@
 import { locale } from "@/consts";
-import { SimpleRegion } from "./simpleRegion";
+import { Region } from "./region";
 import { isFlag } from '@/utils/emoji';
 
 const regionDisplayName = new Intl.DisplayNames([locale], { type: "region", fallback: "none" });
 const regionCodeRegex = new RegExp("^[A-Z]{2}$");
 const emojiFlagUnicodeStartingPosition = 127397;
 
-const simpleRegionFromRegionCode = (code: string): SimpleRegion | null => {
+const regionFromRegionCode = (code: string): Region | null => {
   if (!regionCodeRegex.test(code)) {
     return null;
   }
@@ -26,7 +26,7 @@ const simpleRegionFromRegionCode = (code: string): SimpleRegion | null => {
     return null;
   }
 
-  const simpleRegion: SimpleRegion = {
+  const simpleRegion: Region = {
     code,
     name,
     emoji,
@@ -34,4 +34,4 @@ const simpleRegionFromRegionCode = (code: string): SimpleRegion | null => {
 
   return simpleRegion;
 };
-export default simpleRegionFromRegionCode;
+export default regionFromRegionCode;

@@ -7,7 +7,7 @@ import {
   propertyNameRegionCode,
   propertyNameRegionName,
 } from "@/consts";
-import simpleRegionFromRegionCode from "@/models/simpleRegion/simpleRegionFromRegionCode";
+import regionFromRegionCode from "@/models/region/regionFromRegionCode";
 import notion from "@/notion/client";
 import { isNotionEmoji } from "@/notion/isNotionEmoji";
 import encodeUrlParams from "@/utils/encodeUrlParams";
@@ -52,7 +52,7 @@ const updateEntryRegionAndRevalidate = async (id: string, formData: FormData) =>
   let databaseRegion = databaseRegions.results.at(0);
 
   if (databaseRegion === undefined) {
-    const simpleRegion = simpleRegionFromRegionCode(regionCode);
+    const simpleRegion = regionFromRegionCode(regionCode);
 
     if (simpleRegion === null) {
       throw new Error(`Region with code "${regionCode}" not found`);

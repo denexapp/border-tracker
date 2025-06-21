@@ -1,12 +1,10 @@
 import { propertyNameRegion, propertyNameRegionCode } from "@/consts";
-import { SimpleRegion } from "@/models/simpleRegion/simpleRegion";
+import { Region } from "@/models/region/region";
 import { EntryFieldExtractor } from "../entryFieldExtractor";
-import simpleRegionFromRegionCode from "@/models/simpleRegion/simpleRegionFromRegionCode";
+import regionFromRegionCode from "@/models/region/regionFromRegionCode";
 import retrievePaginatedPageProperty from "@/notion/retrievePaginatedPageProperty";
 
-export type EntryRegion = SimpleRegion;
-
-export const region: EntryFieldExtractor<SimpleRegion> = async (page) => {
+export const region: EntryFieldExtractor<Region> = async (page) => {
   const entryTypeProperty = page.properties[propertyNameRegion];
 
   if (entryTypeProperty === undefined) {
@@ -34,7 +32,7 @@ export const region: EntryFieldExtractor<SimpleRegion> = async (page) => {
     })
     .join("");
 
-  const simpleRegion = simpleRegionFromRegionCode(regionCode);
+  const simpleRegion = regionFromRegionCode(regionCode);
 
   if (simpleRegion === null) {
     throw new Error(`Region with code "${regionCode}" not found`);

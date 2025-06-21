@@ -7,7 +7,7 @@ export const getEntry = async (page: GetPageResponse): Promise<Entry> => {
   }
 
   return {
-    type: entryFieldExtractors.type(page),
+    direction: entryFieldExtractors.direction(page),
     date: entryFieldExtractors.date(page),
     region: await entryFieldExtractors.region(page),
   };

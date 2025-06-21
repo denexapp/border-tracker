@@ -4,7 +4,7 @@ import ButtonSubmit from "@/components/buttonSumbit";
 import H1 from "@/components/h1";
 import Select, { SelectEntry } from "@/components/select";
 import { locale } from "@/consts";
-import { SimpleRegion } from "@/models/simpleRegion/simpleRegion";
+import { Region as RegionModel } from "@/models/region/region";
 import estimateUserRegion from "@/utils/estimateUserRegion";
 import getAllRegions from "@/utils/getAllRegions";
 import { FieldComponent } from "./fieldComponent";
@@ -18,7 +18,7 @@ const Region: FieldComponent = async (props) => {
   const entries = getAllRegions()
     .sort((a, b) => a.name.localeCompare(b.name, locale))
     .map<SelectEntry>(
-      ({ code, name, emoji }: SimpleRegion): SelectEntry => ({
+      ({ code, name, emoji }: RegionModel): SelectEntry => ({
         value: code,
         label: `${emoji} ${name}`,
       })

@@ -1,16 +1,16 @@
-import { SimpleRegion } from "@/models/simpleRegion/simpleRegion";
-import simpleRegionFromRegionCode from "@/models/simpleRegion/simpleRegionFromRegionCode";
+import { Region } from "@/models/region/region";
+import regionFromRegionCode from "@/models/region/regionFromRegionCode";
 
 const codePointA = 65;
 const codePointZ = 90;
 
-const getAllRegions = (): Array<SimpleRegion> => {
+const getAllRegions = (): Array<Region> => {
   const regions = [];
 
   for (let firstCharCodePoint = codePointA; firstCharCodePoint <= codePointZ; firstCharCodePoint++) {
     for (let secondCharCodePoint = codePointA; secondCharCodePoint <= codePointZ; secondCharCodePoint++) {
       const regionCode = String.fromCharCode(firstCharCodePoint) + String.fromCharCode(secondCharCodePoint);
-      const region = simpleRegionFromRegionCode(regionCode);
+      const region = regionFromRegionCode(regionCode);
 
       if (region !== null) {
         regions.push(region);
