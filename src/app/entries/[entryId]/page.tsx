@@ -1,14 +1,13 @@
 import { validateSession } from "@/auth";
-import Text from "@/components/text";
-import { EntryKey } from "@/models/entry/entry";
-import { getUnfilledEntryKey } from "@/models/entry/getUnfilledEntryKey";
-import notion from "@/notion/client";
+import Text from "@/shared/ui/text";
+import { EntryKey } from "@/entities/entry/model/entry/entry";
+import { getUnfilledEntryKey } from "@/entities/entry/lib/getUnfilledEntryKey";
 import { FC, ReactNode } from "react";
-import { getEntry } from "../../../models/entry/getEntry";
-import Date from "./_fields/date";
-import { FieldComponent } from "./_fields/fieldComponent";
-import Region from "./_fields/region";
-import Direction from "./_fields/direction";
+import { getEntry } from "../../../entities/entry/api/getEntry";
+import Date from "./_ui/date";
+import { FieldComponent } from "./_lib/fieldComponent";
+import Region from "./_ui/region";
+import Direction from "./_ui/direction";
 
 interface PageProps {
   params: Promise<{
@@ -26,14 +25,8 @@ const Page: FC<PageProps> = async (props) => {
   const { params } = props;
   const { entryId } = await params;
   await validateSession();
-
-  const page = await notion.pages.retrieve({
-    page_id: entryId,
-  });
-
-  const entry = await getEntry(page);
+  const entry = await getEntry(entryId);
   const unfilledEntryKey = getUnfilledEntryKey(entry);
-
   let content: ReactNode;
 
   if (unfilledEntryKey === null) {

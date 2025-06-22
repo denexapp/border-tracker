@@ -1,9 +1,9 @@
 // The `JWT` interface can be found in the `next-auth/jwt` submodule
 import "next-auth/jwt";
 import { forbidden, unauthorized } from "next/navigation";
-import { alllowedGithubUserIds } from "./consts";
 import NextAuth from "next-auth";
 import GitHub, { GitHubProfile } from "next-auth/providers/github";
+import { alllowedGithubUserIds } from "./shared/config/consts";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [

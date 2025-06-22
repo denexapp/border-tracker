@@ -1,6 +1,6 @@
-import addEntryAndRedirect from "@/actions/addEntryAndRedirect";
-import ButtonForm from "@/components/buttonForm";
-import H1 from "@/components/h1";
+import addEntryAndRedirect from "@/app/_api/addEntryAndRedirect";
+import ButtonForm from "@/shared/ui/buttonForm";
+import H1 from "@/shared/ui/h1";
 import { FC } from "react";
 
 const Page: FC = () => {
