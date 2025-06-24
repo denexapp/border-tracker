@@ -13,7 +13,6 @@ const updateEntryAdditionalStatusesAndRevalidateUnwrapped = authActionClient
   .bindArgsSchemas<[id: z.ZodString]>([z.string()])
   .inputSchema(inputSchema)
   .action(async ({ bindArgsParsedInputs: [id], parsedInput }) => {
-    console.log(JSON.stringify(parsedInput, null, 2));
     const additionalStatuses = Object.keys(parsedInput);
     await updateEntryAdditionalStatuses(id, additionalStatuses);
     revalidatePath(encodeUrlParams`/entries/${id}`);
