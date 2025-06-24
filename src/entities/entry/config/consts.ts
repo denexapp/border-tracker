@@ -4,7 +4,7 @@ export const databaseIdBorderCrossings = "1009ced4-45c2-4917-be68-30e0446b7b57";
 export const propertyNameDirection = "Type";
 export const propertyNameDate = "Date";
 export const propertyNameRegion = "Region";
-export const propertyNameAdditionalStatus = "Additional status";
+export const propertyNameAdditionalStatuses = "Additional status";
 export const propertyValueIdDirectionArrival = "md}{";
 export const propertyValueIdDirectionDeparture = "mWZF";
 

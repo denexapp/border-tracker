@@ -25,7 +25,6 @@ const updateEntryRegionAndRevalidateUnwrapped = authActionClient
     }
 
     await updateEntryRegion(id, simpleRegion);
-    console.log('Revalidate path from updateEntryRegionAndRevalidate:', encodeUrlParams`/entries/${id}`);
     revalidatePath(encodeUrlParams`/entries/${id}`);
   });
 

@@ -8,6 +8,7 @@ import Date from "./_ui/date";
 import { FieldComponent } from "./_lib/fieldComponent";
 import Region from "./_ui/region";
 import Direction from "./_ui/direction";
+import AdditionalStatuses from "./_ui/additionalStatuses";
 
 interface PageProps {
   params: Promise<{
@@ -19,12 +20,13 @@ const fieldComponents: Record<EntryKey, FieldComponent> = {
   direction: Direction,
   date: Date,
   region: Region,
+  additionalStatuses: AdditionalStatuses
 };
 
 const Page: FC<PageProps> = async (props) => {
   const { params } = props;
-  const { entryId } = await params;
   await validateSession();
+  const { entryId } = await params;
   const entry = await getEntry(entryId);
   const unfilledEntryKey = getUnfilledEntryKey(entry);
   let content: ReactNode;
@@ -33,7 +35,7 @@ const Page: FC<PageProps> = async (props) => {
     content = <Text>all fields have been filled, yay</Text>;
   } else {
     const FieldComponent = fieldComponents[unfilledEntryKey];
-    content = <FieldComponent entryId={entryId} />;
+    content = <FieldComponent entryId={entryId} entry={entry} />;
   }
 
   return <div className="grid place-items-center p-2">{content}</div>;

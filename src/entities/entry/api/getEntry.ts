@@ -10,9 +10,17 @@ export const getEntry = async (id: string): Promise<Entry> => {
     throw new Error("Incorrect format");
   }
 
+  const [direction, date, region, additionalStatuses] = await Promise.all([
+    entryFieldExtractors.direction(page),
+    entryFieldExtractors.date(page),
+    entryFieldExtractors.region(page),
+    entryFieldExtractors.additionalStatuses(page),
+  ]);
+
   return {
-    direction: entryFieldExtractors.direction(page),
-    date: entryFieldExtractors.date(page),
-    region: await entryFieldExtractors.region(page),
+    direction,
+    date,
+    region,
+    additionalStatuses,
   };
 };

@@ -1,22 +1,13 @@
 @import "tailwindcss";
 
-:root {
-  color-scheme: light dark;
-}
-
 @theme inline {
   /* colors */
   --color-outline: light-dark(var(--color-sky-500), var(--color-sky-600));
   --color-primary-bg: light-dark(var(--color-sky-500), var(--color-sky-600));
   --color-primary-bg-hover: light-dark(var(--color-sky-400), var(--color-sky-500));
   --color-primary-bg-active: light-dark(var(--color-sky-600), var(--color-sky-700));
-  --color-primary-text: var(--color-neutral-50);
+  --color-primary-content: var(--color-neutral-50);
   --color-bg: light-dark(var(--color-white), var(--color-black));
-  --color-text: light-dark(var(--color-neutral-950), var(--color-neutral-50));
+  --color-content: light-dark(var(--color-neutral-950), var(--color-neutral-50));
   --color-paper-border: light-dark(var(--color-sky-500), var(--color-sky-600));
-}
-
-body {
-  background: var(--color-bg);
-  color: var(--color-text);
 }

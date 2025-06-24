@@ -11,7 +11,6 @@ export const updateEntryDirectionAndRevalidate = authActionClient
   .bindArgsSchemas<[id: z.ZodString, direction: typeof Direction]>([z.string(), Direction])
   .action(async ({ bindArgsParsedInputs: [id, direction] }) => {
     await updateEntryDirection(id, direction);
-    console.log('Revalidate path from updateEntryDirectionAndRevalidate:', encodeUrlParams`/entries/${id}`);
     revalidatePath(encodeUrlParams`/entries/${id}`);
   });
 

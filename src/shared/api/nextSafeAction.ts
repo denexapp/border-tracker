@@ -1,7 +1,7 @@
 import { validateSession } from "@/auth";
 import { createSafeActionClient } from "next-safe-action";
 
-export const noAuthActionClient = createSafeActionClient();
+export const noAuthActionClient = createSafeActionClient({ throwValidationErrors: true });
 
 export const authActionClient = noAuthActionClient.use(async ({ next }) => {
   await validateSession();

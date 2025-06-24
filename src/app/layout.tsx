@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${notoSans.className} antialiased min-h-svh grid grid-rows-[auto_1fr] gap-2 p-2`}>
+      <body className={`${notoSans.className} scheme-light-dark antialiased min-h-svh grid grid-rows-[auto_1fr] gap-2 p-2 text-content bg-bg`}>
         <Paper>
           <div className="flex gap-2 items-center justify-between p-2">
             <ButtonLink href="/">border tracker</ButtonLink>

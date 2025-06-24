@@ -1,10 +1,10 @@
 import { propertyNameRegion, propertyNameRegionCode } from "@/entities/entry/config/consts";
 import { Region } from "@/shared/model/region/region";
-import { EntryFieldExtractor } from "../entryFieldExtractor";
 import regionFromRegionCode from "@/shared/model/region/regionFromRegionCode";
 import retrievePaginatedPageProperty from "@/shared/notion/api/retrievePaginatedPageProperty";
+import { EntryField, EntryFieldExtractor } from "../entryFieldExtractor";
 
-export const region: EntryFieldExtractor<Region> = async (page) => {
+export const region: EntryFieldExtractor<Region | null> = async (page) => {
   const entryTypeProperty = page.properties[propertyNameRegion];
 
   if (entryTypeProperty === undefined) {
@@ -17,26 +17,37 @@ export const region: EntryFieldExtractor<Region> = async (page) => {
 
   const regionPageId = entryTypeProperty.relation.at(0)?.id;
 
+  let value: Region | null;
+
   if (regionPageId === undefined) {
-    return null;
+    value = null;
+  } else {
+    const regionCodeProperty = await retrievePaginatedPageProperty(regionPageId, propertyNameRegionCode);
+
+    const regionCode = regionCodeProperty
+      .map((item) => {
+        if (item.type !== "rich_text") {
+          throw new Error("Incorrect format");
+        }
+        return item.rich_text.plain_text;
+      })
+      .join("");
+
+    const region = regionFromRegionCode(regionCode);
+
+    if (region === null) {
+      throw new Error(`Region with code "${regionCode}" not found`);
+    }
+
+    value = region;
   }
 
-  const regionCodeProperty = await retrievePaginatedPageProperty(regionPageId, propertyNameRegionCode);
+  const filled = value !== null;
 
-  const regionCode = regionCodeProperty
-    .map((item) => {
-      if (item.type !== "rich_text") {
-        throw new Error("Incorrect format");
-      }
-      return item.rich_text.plain_text;
-    })
-    .join("");
+  const result: EntryField<Region | null> = {
+    filled,
+    value,
+  };
 
-  const simpleRegion = regionFromRegionCode(regionCode);
-
-  if (simpleRegion === null) {
-    throw new Error(`Region with code "${regionCode}" not found`);
-  }
-
-  return simpleRegion;
+  return result;
 };

@@ -19,7 +19,6 @@ const updateEntryDateAndRevalidateUnwrapped = authActionClient
   .action(async ({ bindArgsParsedInputs: [id], parsedInput }) => {
     const date = simpleDateFromDateString(parsedInput[formDataDateFieldName]);
     await updateEntryDate(id, date);
-    console.log('Revalidate path from updateEntryDateAndRevalidate:', encodeUrlParams`/entries/${id}`);
     revalidatePath(encodeUrlParams`/entries/${id}`);
   });
 
