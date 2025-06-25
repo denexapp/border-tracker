@@ -23,6 +23,10 @@ const updateEntryRegion = async (id: string, region: Region) => {
 
   const { code, emoji, name } = region;
 
+  if (isNotionEmoji(emoji) === false) {
+    throw new Error(`Emoji "${emoji}" is not a valid Notion emoji`);
+  }
+
   const databaseRegions = await notion.databases.query({
     database_id: databaseIdRegions,
     filter: {
@@ -37,10 +41,6 @@ const updateEntryRegion = async (id: string, region: Region) => {
   let databaseRegion = databaseRegions.results.at(0);
 
   if (databaseRegion === undefined) {
-    if (isNotionEmoji(emoji) === false) {
-      throw new Error(`Emoji "${emoji}" is not a valid Notion emoji`);
-    }
-
     databaseRegion = await notion.pages.create({
       parent: {
         type: "database_id",
@@ -79,6 +79,9 @@ const updateEntryRegion = async (id: string, region: Region) => {
 
   await notion.pages.update({
     page_id: id,
+    icon: {
+      emoji,
+    },
     properties: {
       [propertyNameRegion]: {
         type: "relation",
