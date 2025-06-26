@@ -5,6 +5,7 @@ export const propertyNameDirection = "Type";
 export const propertyNameDate = "Date";
 export const propertyNameRegion = "Region";
 export const propertyNameAdditionalStatuses = "Additional status";
+export const propertyNameWay = "Way";
 export const propertyValueIdDirectionArrival = "md}{";
 export const propertyValueIdDirectionDeparture = "mWZF";
 

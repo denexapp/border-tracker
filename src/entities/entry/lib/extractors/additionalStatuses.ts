@@ -1,9 +1,9 @@
 import { databaseIdBorderCrossings, propertyNameAdditionalStatuses } from "@/entities/entry/config/consts";
 import notion from "@/shared/notion/api/client";
-import { AdditionalStatus } from "../../model/additionalStatus/additionalStatus";
+import { SelectItem } from "../../model/selectItem/selectItem";
 import { EntryField, EntryFieldExtractor } from "../entryFieldExtractor";
 
-export const additionalStatuses: EntryFieldExtractor<Array<string>, Array<AdditionalStatus>> = async (page) => {
+export const additionalStatuses: EntryFieldExtractor<Array<string>, Array<SelectItem>> = async (page) => {
   const selectedAdditionalStatuses = page.properties[propertyNameAdditionalStatuses];
 
   if (selectedAdditionalStatuses === undefined) {
@@ -28,17 +28,16 @@ export const additionalStatuses: EntryFieldExtractor<Array<string>, Array<Additi
     throw new Error("Incorrect format");
   }
 
-  const filled =
-    selectedAdditionalStatuses.multi_select.length !== 0 || allAdditionalStatuses.multi_select.options.length === 0;
+  const filled = selectedAdditionalStatuses.multi_select.length !== 0;
 
   const value = selectedAdditionalStatuses.multi_select.map((status) => status.id);
 
-  const meta = allAdditionalStatuses.multi_select.options.map<AdditionalStatus>(({ id, name }) => ({
+  const meta = allAdditionalStatuses.multi_select.options.map<SelectItem>(({ id, name }) => ({
     id,
     name,
   }));
 
-  const result: EntryField<Array<string>, Array<AdditionalStatus>> = {
+  const result: EntryField<Array<string>, Array<SelectItem>> = {
     filled,
     value,
     meta,

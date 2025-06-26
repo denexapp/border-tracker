@@ -3,6 +3,9 @@
 @theme inline {
   /* colors */
   --color-outline: light-dark(var(--color-sky-500), var(--color-sky-600));
+  /* --color-primary-bg: light-dark(rgb(247, 176, 178), var(--color-sky-600));
+  --color-primary-bg-hover: light-dark(rgb(194, 141, 143), var(--color-sky-500));
+  --color-primary-bg-active: light-dark(rgb(165, 207, 217 ), var(--color-sky-700)); */
   --color-primary-bg: light-dark(var(--color-sky-500), var(--color-sky-600));
   --color-primary-bg-hover: light-dark(var(--color-sky-400), var(--color-sky-500));
   --color-primary-bg-active: light-dark(var(--color-sky-600), var(--color-sky-700));

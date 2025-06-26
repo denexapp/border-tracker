@@ -1,14 +1,15 @@
 import { validateSession } from "@/auth";
-import Text from "@/shared/ui/text";
-import { EntryKey } from "@/entities/entry/model/entry/entry";
 import { getUnfilledEntryKey } from "@/entities/entry/lib/getUnfilledEntryKey";
+import { EntryKey } from "@/entities/entry/model/entry/entry";
+import Text from "@/shared/ui/text";
 import { FC, ReactNode } from "react";
 import { getEntry } from "../../../entities/entry/api/getEntry";
-import Date from "./_ui/date";
 import { FieldComponent } from "./_lib/fieldComponent";
-import Region from "./_ui/region";
-import Direction from "./_ui/direction";
 import AdditionalStatuses from "./_ui/additionalStatuses";
+import Date from "./_ui/date";
+import Direction from "./_ui/direction";
+import Region from "./_ui/region";
+import Way from "./_ui/way";
 
 interface PageProps {
   params: Promise<{
@@ -20,7 +21,8 @@ const fieldComponents: Record<EntryKey, FieldComponent> = {
   direction: Direction,
   date: Date,
   region: Region,
-  additionalStatuses: AdditionalStatuses
+  additionalStatuses: AdditionalStatuses,
+  way: Way,
 };
 
 const Page: FC<PageProps> = async (props) => {
