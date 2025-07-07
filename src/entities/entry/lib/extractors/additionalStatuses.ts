@@ -1,5 +1,5 @@
 import { databaseIdBorderCrossings, propertyNameAdditionalStatuses } from "@/entities/entry/config/consts";
-import notion from "@/shared/notion/api/client";
+import retrieveCachedDatabase from "@/shared/notion/api/cachedFunctions/retrieveCachedDatabase";
 import { SelectItem } from "../../model/selectItem/selectItem";
 import { EntryField, EntryFieldExtractor } from "../entryFieldExtractor";
 
@@ -14,9 +14,7 @@ export const additionalStatuses: EntryFieldExtractor<Array<string>, Array<Select
     throw new Error("Incorrect format");
   }
 
-  const database = await notion.databases.retrieve({
-    database_id: databaseIdBorderCrossings,
-  });
+  const database = await retrieveCachedDatabase(databaseIdBorderCrossings);
 
   const allAdditionalStatuses = database.properties[propertyNameAdditionalStatuses];
 

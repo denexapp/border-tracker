@@ -1,7 +1,7 @@
 import { propertyNameRegion, propertyNameRegionCode } from "@/entities/entry/config/consts";
 import { Region } from "@/shared/model/region/region";
 import regionFromRegionCode from "@/shared/model/region/regionFromRegionCode";
-import retrievePaginatedPageProperty from "@/shared/notion/api/retrievePaginatedPageProperty";
+import retrieveCachedPaginatedPageProperty from "@/shared/notion/api/cachedFunctions/retrieveCachedPaginatedPageProperty";
 import { EntryField, EntryFieldExtractor } from "../entryFieldExtractor";
 
 export const region: EntryFieldExtractor<Region | null> = async (page) => {
@@ -22,7 +22,7 @@ export const region: EntryFieldExtractor<Region | null> = async (page) => {
   if (regionPageId === undefined) {
     value = null;
   } else {
-    const regionCodeProperty = await retrievePaginatedPageProperty(regionPageId, propertyNameRegionCode);
+    const regionCodeProperty = await retrieveCachedPaginatedPageProperty(regionPageId, propertyNameRegionCode);
 
     const regionCode = regionCodeProperty
       .map((item) => {

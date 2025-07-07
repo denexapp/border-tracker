@@ -1,17 +1,17 @@
-import ButtonSubmit from "@/shared/ui/buttonSumbit";
-import H1 from "@/shared/ui/h1";
+import ButtonSubmit from "@/shared/ui/button/buttonSumbit";
+import H1 from "@/shared/ui/text/h1";
 import RadioButton from "@/shared/ui/radioButton";
 import updateEntryWayAndRevalidate from "../_api/updateEntryWayAndRevalidate";
 import { formDataWayFieldName } from "../_lib/consts";
 import { FieldComponent } from "../_lib/fieldComponent";
 
 const Way: FieldComponent = async (props) => {
-  const { entryId, entry } = props;
+  const { entry } = props;
 
-  const setEntryWay = updateEntryWayAndRevalidate.bind(null, entryId);
-  const selectedWay = entry.way.value;
+  const setEntryWay = updateEntryWayAndRevalidate.bind(null, entry.id);
+  const selectedWay = entry.fillableFields.way.value;
 
-  const ways = entry.way.meta.map(({ id, name }) => (
+  const ways = entry.fillableFields.way.meta.map(({ id, name }) => (
     <RadioButton name={formDataWayFieldName} value={id} key={id} defaultValue={selectedWay === id}>
       {name}
     </RadioButton>

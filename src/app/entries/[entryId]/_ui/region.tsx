@@ -4,15 +4,15 @@ import { locale } from "@/shared/config/consts";
 import estimateUserRegion from "@/shared/model/region/estimateUserRegion";
 import getAllRegions from "@/shared/model/region/getAllRegions";
 import { Region as RegionModel } from "@/shared/model/region/region";
-import ButtonSubmit from "@/shared/ui/buttonSumbit";
-import H1 from "@/shared/ui/h1";
+import ButtonSubmit from "@/shared/ui/button/buttonSumbit";
+import H1 from "@/shared/ui/text/h1";
 import Select, { SelectEntry } from "@/shared/ui/select";
 import { FieldComponent } from "../_lib/fieldComponent";
 
 const Region: FieldComponent = async (props) => {
-  const { entryId, entry } = props;
-  const setEntryRegion = updateEntryRegionAndRevalidate.bind(null, entryId);
-  const defaultValue = entry.region.value?.code ?? (await estimateUserRegion())?.code;
+  const { entry } = props;
+  const setEntryRegion = updateEntryRegionAndRevalidate.bind(null, entry.id);
+  const defaultValue = entry.fillableFields.region.value?.code ?? (await estimateUserRegion())?.code;
   const entries = getAllRegions()
     .sort((a, b) => a.name.localeCompare(b.name, locale))
     .map<SelectEntry>(

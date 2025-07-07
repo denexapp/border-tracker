@@ -1,7 +1,7 @@
 import { validateSession } from "@/auth";
 import { getUnfilledEntryKey } from "@/entities/entry/lib/getUnfilledEntryKey";
-import { EntryKey } from "@/entities/entry/model/entry/entry";
-import Text from "@/shared/ui/text";
+import { FillableEntryFieldKey } from "@/entities/entry/model/entry/entry";
+import Text from "@/shared/ui/text/text";
 import { FC, ReactNode } from "react";
 import { getEntry } from "../../../entities/entry/api/getEntry";
 import { FieldComponent } from "./_lib/fieldComponent";
@@ -17,7 +17,7 @@ interface PageProps {
   }>;
 }
 
-const fieldComponents: Record<EntryKey, FieldComponent> = {
+const fieldComponents: Record<FillableEntryFieldKey, FieldComponent> = {
   direction: Direction,
   date: Date,
   region: Region,
@@ -27,6 +27,7 @@ const fieldComponents: Record<EntryKey, FieldComponent> = {
 
 const Page: FC<PageProps> = async (props) => {
   const { params } = props;
+
   await validateSession();
   const { entryId } = await params;
   const entry = await getEntry(entryId);
@@ -37,7 +38,7 @@ const Page: FC<PageProps> = async (props) => {
     content = <Text>all fields have been filled, yay</Text>;
   } else {
     const FieldComponent = fieldComponents[unfilledEntryKey];
-    content = <FieldComponent entryId={entryId} entry={entry} />;
+    content = <FieldComponent entry={entry} />;
   }
 
   return <div className="grid place-items-center p-2">{content}</div>;

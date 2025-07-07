@@ -1,8 +1,8 @@
-import { Entry, entryFieldKeys, EntryKey } from "../model/entry/entry";
+import { Entry, fillableEntryFieldKeys, FillableEntryFieldKey } from "../model/entry/entry";
 
-export const getUnfilledEntryKey = (entry: Entry): EntryKey | null => {
-  for (const key of entryFieldKeys) {
-    if (entry[key].filled === false) {
+export const getUnfilledEntryKey = (entry: Entry): FillableEntryFieldKey | null => {
+  for (const key of fillableEntryFieldKeys) {
+    if (entry.fillableFields[key].filled === false) {
       return key;
     }
   }

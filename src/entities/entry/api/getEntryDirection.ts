@@ -1,17 +1,10 @@
-import notion from "@/shared/notion/api/client";
+import retrievePageWithProperties from "@/shared/notion/api/retrievePageWithProperties";
 import { Direction } from "../model/direction/direction";
-import { entryFieldExtractors } from "../model/entry/entry";
+import { fillableEntryFieldExtractors } from "../model/entry/entry";
 
 export const getEntryDirection = async (id: string): Promise<Direction | null> => {
-  const page = await notion.pages.retrieve({
-    page_id: id,
-  });
-
-  if (!("properties" in page)) {
-    throw new Error("Incorrect format");
-  }
-
-  const directionField = await entryFieldExtractors.direction(page);
+  const page = await retrievePageWithProperties(id);
+  const directionField = await fillableEntryFieldExtractors.direction(page);
   const direction = directionField.value;
 
   return direction;

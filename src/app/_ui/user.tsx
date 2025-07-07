@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
 import { FC } from "react";
-import ButtonForm from "../../shared/ui/buttonForm";
-import Text from "../../shared/ui/text";
+import ButtonForm from "../../shared/ui/button/buttonForm";
+import Text from "../../shared/ui/text/text";
 import signIn from "@/app/_api/signIn";
 import signOut from "@/app/_api/signOut";
 

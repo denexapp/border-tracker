@@ -1,16 +1,16 @@
-import ButtonSubmit from "@/shared/ui/buttonSumbit";
+import ButtonSubmit from "@/shared/ui/button/buttonSumbit";
 import Checkbox from "@/shared/ui/checkbox";
-import H1 from "@/shared/ui/h1";
+import H1 from "@/shared/ui/text/h1";
 import updateEntryAdditionalStatusesAndRevalidate from "../_api/updateEntryAdditionalStatusesAndRevalidate";
 import { FieldComponent } from "../_lib/fieldComponent";
 
 const AdditionalStatuses: FieldComponent = async (props) => {
-  const { entryId, entry } = props;
+  const { entry } = props;
 
-  const setEntryAdditionalStatuses = updateEntryAdditionalStatusesAndRevalidate.bind(null, entryId);
-  const selectedStatuses = new Set(entry.additionalStatuses.value);
+  const setEntryAdditionalStatuses = updateEntryAdditionalStatusesAndRevalidate.bind(null, entry.id);
+  const selectedStatuses = new Set(entry.fillableFields.additionalStatuses.value);
 
-  const statuses = entry.additionalStatuses.meta.map(({ id, name }) => (
+  const statuses = entry.fillableFields.additionalStatuses.meta.map(({ id, name }) => (
     <Checkbox name={id} key={id} defaultValue={selectedStatuses.has(id)}>
       {name}
     </Checkbox>

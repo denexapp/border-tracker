@@ -1,6 +1,6 @@
 "use client";
 
-import Text from "@/shared/ui/text";
+import Text from "@/shared/ui/text/text";
 
 export default function Error() {
   return (

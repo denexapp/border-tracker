@@ -13,4 +13,6 @@
   --color-bg: light-dark(var(--color-white), var(--color-black));
   --color-content: light-dark(var(--color-neutral-950), var(--color-neutral-50));
   --color-paper-border: light-dark(var(--color-sky-500), var(--color-sky-600));
+  --color-paper-border-hover: light-dark(var(--color-sky-400), var(--color-sky-500));
+  --color-paper-border-active: light-dark(var(--color-sky-600), var(--color-sky-700));
 }

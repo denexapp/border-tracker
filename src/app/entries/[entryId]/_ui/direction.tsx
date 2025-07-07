@@ -1,13 +1,13 @@
 import updateEntryDirectionAndRevalidate from "@/app/entries/[entryId]/_api/updateEntryDirectionAndRevalidate";
-import ButtonForm from "@/shared/ui/buttonForm";
-import H1 from "@/shared/ui/h1";
+import ButtonForm from "@/shared/ui/button/buttonForm";
+import H1 from "@/shared/ui/text/h1";
 import { FieldComponent } from "../_lib/fieldComponent";
 
 const Direction: FieldComponent = async (props) => {
-  const { entryId } = props;
+  const { entry } = props;
 
-  const setEntryDirectionArrival = updateEntryDirectionAndRevalidate.bind(null, entryId, "arrival");
-  const setEntryDirectionDeparture = updateEntryDirectionAndRevalidate.bind(null, entryId, "departure");
+  const setEntryDirectionArrival = updateEntryDirectionAndRevalidate.bind(null, entry.id, "arrival");
+  const setEntryDirectionDeparture = updateEntryDirectionAndRevalidate.bind(null, entry.id, "departure");
 
   return (
     <div className="flex flex-col gap-6 items-center">

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 import "./globals.css";
 import User from "@/app/_ui/user";
-import Paper from "@/shared/ui/paper";
-import ButtonLink from "@/shared/ui/buttonLink";
+import Paper from "@/shared/ui/paper/paper";
+import ButtonLink from "@/shared/ui/button/buttonLink";
 
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",

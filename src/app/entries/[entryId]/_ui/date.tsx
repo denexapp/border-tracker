@@ -1,16 +1,16 @@
 import updateEntryDateAndRevalidate from "@/app/entries/[entryId]/_api/updateEntryDateAndRevalidate";
 import estimateUserDate from "@/shared/model/simpleDate/estimateUserDate";
-import ButtonSubmit from "@/shared/ui/buttonSumbit";
+import ButtonSubmit from "@/shared/ui/button/buttonSumbit";
 import DatePicker from "@/shared/ui/datePicker";
-import H1 from "@/shared/ui/h1";
+import H1 from "@/shared/ui/text/h1";
 import { formDataDateFieldName } from "../_lib/consts";
 import { FieldComponent } from "../_lib/fieldComponent";
 
 const Date: FieldComponent = async (props) => {
-  const { entryId, entry } = props;
+  const { entry } = props;
 
-  const setEntryDate = updateEntryDateAndRevalidate.bind(null, entryId);
-  const defaultValue = entry.date.value ?? (await estimateUserDate()) ?? undefined;
+  const setEntryDate = updateEntryDateAndRevalidate.bind(null, entry.id);
+  const defaultValue = entry.fillableFields.date.value ?? (await estimateUserDate()) ?? undefined;
 
   return (
     <div className="flex flex-col gap-6 items-center">
