@@ -1,13 +1,12 @@
 import type { Entry } from "@/entities/entry/model/entry/entry";
 import encodeUrlParams from "@/shared/lib/url/encodeUrlParams";
-import H3 from "@/shared/ui/text/h3";
-import PaperLink from "@/shared/ui/paper/paperLink";
-import { FC, ReactNode } from "react";
 import simpleDateToFormattedString from "@/shared/model/simpleDate/simpleDateToFormattedString";
-import Text from "@/shared/ui/text/text";
-import H2 from "@/shared/ui/text/h2";
-import { locale } from "@/shared/config/consts";
 import Paper from "@/shared/ui/paper/paper";
+import PaperLink from "@/shared/ui/paper/paperLink";
+import H2 from "@/shared/ui/text/h2";
+import H3 from "@/shared/ui/text/h3";
+import Text from "@/shared/ui/text/text";
+import { FC, ReactNode } from "react";
 
 interface EntryProps {
   entry: Entry;
