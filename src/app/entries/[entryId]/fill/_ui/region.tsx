@@ -1,12 +1,12 @@
-import updateEntryRegionAndRevalidate from "@/app/entries/[entryId]/_api/updateEntryRegionAndRevalidate";
-import { formDataRegionFieldName } from "@/app/entries/[entryId]/_lib/consts";
+import { formDataRegionFieldName } from "@/app/entries/[entryId]/fill/_lib/consts";
 import { locale } from "@/shared/config/consts";
 import estimateUserRegion from "@/shared/model/region/estimateUserRegion";
 import getAllRegions from "@/shared/model/region/getAllRegions";
 import { Region as RegionModel } from "@/shared/model/region/region";
 import ButtonSubmit from "@/shared/ui/button/buttonSumbit";
-import H1 from "@/shared/ui/text/h1";
 import Select, { SelectEntry } from "@/shared/ui/select";
+import H1 from "@/shared/ui/text/h1";
+import updateEntryRegionAndRevalidate from "../_api/updateEntryRegionAndRevalidate";
 import { FieldComponent } from "../_lib/fieldComponent";
 
 const Region: FieldComponent = async (props) => {

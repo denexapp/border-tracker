@@ -1,14 +1,16 @@
 import { EntryFieldExtractor } from "../../lib/entryFieldExtractor";
-import { date } from "../../lib/extractors/date";
-import { region } from "../../lib/extractors/region";
-import { direction } from "../../lib/extractors/direction";
 import { additionalStatuses } from "../../lib/extractors/additionalStatuses";
+import { date } from "../../lib/extractors/date";
+import { direction } from "../../lib/extractors/direction";
+import { number } from "../../lib/extractors/number";
+import { region } from "../../lib/extractors/region";
 import { way } from "../../lib/extractors/way";
 
-export const fillableEntryFieldKeys = ["direction", "way", "date", "region", "additionalStatuses"] as const;
+export const fillableEntryFieldKeys = ["number", "direction", "way", "date", "region", "additionalStatuses"] as const;
 export type FillableEntryFieldKey = (typeof fillableEntryFieldKeys)[number];
 
 export const fillableEntryFieldExtractors = {
+  number,
   direction,
   way,
   date,

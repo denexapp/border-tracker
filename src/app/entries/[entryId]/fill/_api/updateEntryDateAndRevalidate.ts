@@ -30,7 +30,7 @@ const updateEntryDateAndRevalidateUnwrapped = authActionClient
       await updateEntryDateAndTitle(id, date, title);
     }
 
-    revalidatePath(encodeUrlParams`/entries/${id}`);
+    revalidatePath(encodeUrlParams`/entries/${id}/fill`);
   });
 
 const updateEntryDateAndRevalidate = wrapFormAction(updateEntryDateAndRevalidateUnwrapped);

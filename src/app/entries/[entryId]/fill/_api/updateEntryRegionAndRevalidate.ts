@@ -25,7 +25,7 @@ const updateEntryRegionAndRevalidateUnwrapped = authActionClient
     }
 
     await updateEntryRegion(id, simpleRegion);
-    revalidatePath(encodeUrlParams`/entries/${id}`);
+    revalidatePath(encodeUrlParams`/entries/${id}/fill`);
   });
 
 const updateEntryRegionAndRevalidate = wrapFormAction(updateEntryRegionAndRevalidateUnwrapped);

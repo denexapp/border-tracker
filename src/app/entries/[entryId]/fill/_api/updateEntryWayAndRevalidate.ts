@@ -18,7 +18,7 @@ const updateEntryWayAndRevalidateUnwrapped = authActionClient
   .action(async ({ bindArgsParsedInputs: [id], parsedInput }) => {
     const way = parsedInput[formDataWayFieldName];
     await updateEntryWay(id, way);
-    revalidatePath(encodeUrlParams`/entries/${id}`);
+    revalidatePath(encodeUrlParams`/entries/${id}/fill`);
   });
 
 const updateEntryWayAndRevalidate = wrapFormAction(updateEntryWayAndRevalidateUnwrapped);

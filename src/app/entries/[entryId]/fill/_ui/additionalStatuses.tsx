@@ -1,7 +1,7 @@
 import ButtonSubmit from "@/shared/ui/button/buttonSumbit";
 import Checkbox from "@/shared/ui/checkbox";
 import H1 from "@/shared/ui/text/h1";
-import updateEntryAdditionalStatusesAndRevalidate from "../_api/updateEntryAdditionalStatusesAndRevalidate";
+import updateEntryAdditionalStatusesAndRevalidate from "../_api/updateEntryAdditionalStatusesAndRedirectToEntry";
 import { FieldComponent } from "../_lib/fieldComponent";
 
 const AdditionalStatuses: FieldComponent = async (props) => {

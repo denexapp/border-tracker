@@ -1,21 +1,21 @@
-import type { Entry } from "@/entities/entry/model/entry/entry";
-import encodeUrlParams from "@/shared/lib/url/encodeUrlParams";
 import simpleDateToFormattedString from "@/shared/model/simpleDate/simpleDateToFormattedString";
 import Paper from "@/shared/ui/paper/paper";
-import PaperLink from "@/shared/ui/paper/paperLink";
 import H2 from "@/shared/ui/text/h2";
 import H3 from "@/shared/ui/text/h3";
 import Text from "@/shared/ui/text/text";
 import { FC, ReactNode } from "react";
+import { Entry } from "../model/entry/entry";
 
-interface EntryProps {
+interface EntryComponentProps {
   entry: Entry;
 }
 
-const Entry: FC<EntryProps> = (props) => {
+const EntryComponentCore: FC<EntryComponentProps> = (props) => {
   const { entry } = props;
 
-  const { additionalStatuses, date, direction, region, way } = entry.fillableFields;
+  const {
+    fillableFields: { date, direction, region, additionalStatuses, way, number },
+  } = entry;
 
   const dateNode = date.value ? simpleDateToFormattedString(date.value) : "Unknown date";
   const directionNode =
@@ -43,14 +43,16 @@ const Entry: FC<EntryProps> = (props) => {
     wayName = way.meta.find((meta) => meta.id === way.value)?.name ?? null;
   }
 
+  const entryNumberNode: string = number.value !== null ? `#${number.value}` : "Unknown number";
+
   return (
-    <PaperLink href={encodeUrlParams`/entries/${entry.id}`}>
-      <div className="flex flex-col gap-3 p-4">
-        <div className="flex flex-col gap-2">
-          <div className="flex justify-between gap-2 items-center">
-            <H3>{dateNode}</H3>
-            <H3>{directionNode}</H3>
-          </div>
+    <>
+      <div className="flex flex-col gap-2">
+        <div className="flex justify-between gap-2 items-center">
+          <H3>{dateNode}</H3>
+          <H3>{directionNode}</H3>
+        </div>
+        <div className="flex gap-4 justify-between items-end">
           <div className="flex gap-4 items-center">
             <span className="text-2xl/6">{regionEmojiNode}</span>
             <div className="flex flex-col">
@@ -58,11 +60,12 @@ const Entry: FC<EntryProps> = (props) => {
               <Text>{wayName ?? "Unknown way"}</Text>
             </div>
           </div>
+          <Text>{entryNumberNode}</Text>
         </div>
-        {additionalStatusesNode}
       </div>
-    </PaperLink>
+      {additionalStatusesNode}
+    </>
   );
 };
 
-export default Entry;
+export default EntryComponentCore;

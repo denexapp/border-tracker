@@ -1,8 +1,8 @@
-import updateEntryDateAndRevalidate from "@/app/entries/[entryId]/_api/updateEntryDateAndRevalidate";
 import estimateUserDate from "@/shared/model/simpleDate/estimateUserDate";
 import ButtonSubmit from "@/shared/ui/button/buttonSumbit";
 import DatePicker from "@/shared/ui/datePicker";
 import H1 from "@/shared/ui/text/h1";
+import updateEntryDateAndRevalidate from "../_api/updateEntryDateAndRevalidate";
 import { formDataDateFieldName } from "../_lib/consts";
 import { FieldComponent } from "../_lib/fieldComponent";
 

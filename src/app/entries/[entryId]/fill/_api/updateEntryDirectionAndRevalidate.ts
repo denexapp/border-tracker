@@ -22,7 +22,7 @@ export const updateEntryDirectionAndRevalidate = authActionClient
       await updateEntryDirectionAndTitle(id, direction, title);
     }
 
-    revalidatePath(encodeUrlParams`/entries/${id}`);
+    revalidatePath(encodeUrlParams`/entries/${id}/fill`);
   });
 
 export default updateEntryDirectionAndRevalidate;

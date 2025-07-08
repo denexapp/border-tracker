@@ -1,6 +1,6 @@
-import updateEntryDirectionAndRevalidate from "@/app/entries/[entryId]/_api/updateEntryDirectionAndRevalidate";
 import ButtonForm from "@/shared/ui/button/buttonForm";
 import H1 from "@/shared/ui/text/h1";
+import updateEntryDirectionAndRevalidate from "../_api/updateEntryDirectionAndRevalidate";
 import { FieldComponent } from "../_lib/fieldComponent";
 
 const Direction: FieldComponent = async (props) => {
