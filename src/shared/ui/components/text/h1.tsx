@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from "react";
-import WithClassName from "../helpers/withClassName";
 import { twMerge } from "tailwind-merge";
+import WithClassName from "../../helpers/withClassName";
 
 const H1: FC<PropsWithChildren<WithClassName>> = (props) => {
   const { children, className } = props;
