@@ -22,4 +22,4 @@ export type FillableEntryFields = {
   [key in FillableEntryFieldKey]: Awaited<ReturnType<(typeof fillableEntryFieldExtractors)[key]>>;
 };
 
-export type Entry = { id: string; fillableFields: FillableEntryFields };
+export type Entry = { id: string; notionUrl: string; fillableFields: FillableEntryFields };

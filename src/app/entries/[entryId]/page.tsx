@@ -14,7 +14,6 @@ interface PageProps {
 
 const Page: FC<PageProps> = async (props) => {
   const { params } = props;
-
   await validateSession();
   const { entryId } = await params;
   const entry = await getEntry(entryId);
@@ -23,7 +22,10 @@ const Page: FC<PageProps> = async (props) => {
     <div className="flex flex-col gap-2 items-center justify-center p-2">
       <H1 className="py-2">entry</H1>
       <EntryComponent entry={entry} className="max-w-xl w-full" />
-      <ButtonLink href={encodeUrlParams`/entries/${entryId}/fill`}>fill entry</ButtonLink>
+      <div className="flex gap-2 items-center">
+        <ButtonLink href={encodeUrlParams`/entries/${entryId}/fill`}>fill entry</ButtonLink>
+        <ButtonLink href={entry.notionUrl}>open in notion</ButtonLink>
+      </div>
     </div>
   );
 };
