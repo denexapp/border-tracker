@@ -1,6 +1,7 @@
-import ButtonSubmit from "@/shared/ui/button/buttonSumbit";
-import H1 from "@/shared/ui/text/h1";
-import RadioButton from "@/shared/ui/radioButton";
+import ButtonSubmit from "@/shared/ui/components/button/buttonSumbit";
+import RadioButton from "@/shared/ui/components/radioButton";
+import H1 from "@/shared/ui/components/text/h1";
+import ViewTransition from "@/shared/ui/components/viewTransition";
 import updateEntryWayAndRevalidate from "../_api/updateEntryWayAndRevalidate";
 import { formDataWayFieldName } from "../_lib/consts";
 import { FieldComponent } from "../_lib/fieldComponent";
@@ -19,11 +20,15 @@ const Way: FieldComponent = async (props) => {
 
   return (
     <div className="flex flex-col gap-6 items-center">
-      <H1>select way</H1>
+      <ViewTransition name={"h1-transition"}>
+        <H1>choose way</H1>
+      </ViewTransition>
       <div className="flex flex-col gap-4">
         <form className="contents" action={setEntryWay}>
           {ways}
-          <ButtonSubmit>confirm way</ButtonSubmit>
+          <ViewTransition name={"action-button-1-transition"}>
+            <ButtonSubmit>confirm way</ButtonSubmit>
+          </ViewTransition>
         </form>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import Paper from "@/shared/ui/paper/paper";
+import Paper from "@/shared/ui/components/paper/paper";
 import { FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { Entry } from "../model/entry/entry";

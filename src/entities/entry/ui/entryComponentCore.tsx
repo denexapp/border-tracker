@@ -1,8 +1,8 @@
 import simpleDateToFormattedString from "@/shared/model/simpleDate/simpleDateToFormattedString";
-import Paper from "@/shared/ui/paper/paper";
-import H2 from "@/shared/ui/text/h2";
-import H3 from "@/shared/ui/text/h3";
-import Text from "@/shared/ui/text/text";
+import Paper from "@/shared/ui/components/paper/paper";
+import H2 from "@/shared/ui/components/text/h2";
+import H3 from "@/shared/ui/components/text/h3";
+import Text from "@/shared/ui/components/text/text";
 import { FC, ReactNode } from "react";
 import { Entry } from "../model/entry/entry";
 

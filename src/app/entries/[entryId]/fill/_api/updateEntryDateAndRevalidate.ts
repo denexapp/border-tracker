@@ -1,16 +1,16 @@
 "use server";
 
+import { getEntryDirection } from "@/entities/entry/api/getEntryDirection";
 import updateEntryDate from "@/entities/entry/api/updateEntryDate";
-import simpleDateFromDateString from "@/shared/model/simpleDate/simpleDateFromDateString";
-import encodeUrlParams from "@/shared/lib/url/encodeUrlParams";
+import updateEntryDateAndTitle from "@/entities/entry/api/updateEntryDateAndTitle";
+import { createEntryTitle } from "@/entities/entry/lib/createEntryTitle";
 import { authActionClient, wrapFormAction } from "@/shared/api/nextSafeAction";
+import encodeUrlParams from "@/shared/lib/url/encodeUrlParams";
+import simpleDateFromDateString from "@/shared/model/simpleDate/simpleDateFromDateString";
 import { revalidatePath } from "next/cache";
 import { zfd } from "zod-form-data";
 import z from "zod/v4";
 import { formDataDateFieldName } from "../_lib/consts";
-import { getEntryDirection } from "@/entities/entry/api/getEntryDirection";
-import updateEntryDateAndTitle from "@/entities/entry/api/updateEntryDateAndTitle";
-import { createEntryTitle } from "@/entities/entry/lib/createEntryTitle";
 
 const inputSchema = zfd.formData({
   [formDataDateFieldName]: zfd.text(z.iso.date()),

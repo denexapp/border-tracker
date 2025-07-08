@@ -1,4 +1,4 @@
-import PaperLink from "@/shared/ui/paper/paperLink";
+import PaperLink from "@/shared/ui/components/paper/paperLink";
 import { FC } from "react";
 import { Entry } from "../model/entry/entry";
 import EntryComponentCore from "./entryComponentCore";

@@ -1,7 +1,8 @@
 import { getLastEntry } from "@/entities/entry/api/getLastEntry";
-import ButtonSubmit from "@/shared/ui/button/buttonSumbit";
-import NumberInput from "@/shared/ui/numberInput";
-import H1 from "@/shared/ui/text/h1";
+import ButtonSubmit from "@/shared/ui/components/button/buttonSumbit";
+import NumberInput from "@/shared/ui/components/numberInput";
+import H1 from "@/shared/ui/components/text/h1";
+import ViewTransition from "@/shared/ui/components/viewTransition";
 import updateEntryNumberAndRevalidate from "../_api/updateEntryNumberAndRevalidate";
 import { formDataNumberFieldName, startingEntryNumber } from "../_lib/consts";
 import { FieldComponent } from "../_lib/fieldComponent";
@@ -21,11 +22,15 @@ const Number: FieldComponent = async (props) => {
 
   return (
     <div className="flex flex-col gap-6 items-center">
-      <H1>specify entry number</H1>
+      <ViewTransition name={"h1-transition"}>
+        <H1>specify entry number</H1>
+      </ViewTransition>
       <div className="flex flex-col gap-4">
         <form className="contents" action={setEntryNumber}>
           <NumberInput min={startingEntryNumber} name={formDataNumberFieldName} required defaultValue={defaultValue} />
-          <ButtonSubmit>confirm entry number</ButtonSubmit>
+          <ViewTransition name={"action-button-1-transition"}>
+            <ButtonSubmit>confirm entry number</ButtonSubmit>
+          </ViewTransition>
         </form>
       </div>
     </div>

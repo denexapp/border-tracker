@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FC, PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
-import WithClassName from "../helpers/withClassName";
+import WithClassName from "../../helpers/withClassName";
 
 interface PaperLinkProps {
   href: string;

@@ -1,7 +1,7 @@
 import { validateSession } from "@/auth";
 import { getUnfilledEntryKey } from "@/entities/entry/lib/getUnfilledEntryKey";
 import { FillableEntryFieldKey } from "@/entities/entry/model/entry/entry";
-import Text from "@/shared/ui/text/text";
+import Text from "@/shared/ui/components/text/text";
 import { FC, ReactNode } from "react";
 import { getEntry } from "../../../../entities/entry/api/getEntry";
 import { FieldComponent } from "./_lib/fieldComponent";

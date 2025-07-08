@@ -1,4 +1,4 @@
-import Text from "@/shared/ui/text/text";
+import Text from "@/shared/ui/components/text/text";
 import { FC } from "react";
 
 const Page: FC = () => {
