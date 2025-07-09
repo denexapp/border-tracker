@@ -7,12 +7,12 @@ import { formDataWayFieldName } from "../_lib/consts";
 import { FieldComponent } from "../_lib/fieldComponent";
 import FieldComponentContent from "./fieldComponentContent";
 import FieldComponentWrapper from "./fieldComponentWrapper";
+import { getLastEntry } from "@/entities/entry/api/getLastEntry";
 
 const Way: FieldComponent = async (props) => {
   const { entry } = props;
-
   const setEntryWay = updateEntryWayAndRevalidate.bind(null, entry.id);
-  const selectedWay = entry.fillableFields.way.value;
+  const selectedWay = entry.fillableFields.way.value ?? (await getLastEntry())?.fillableFields.way.value ?? null;
 
   const ways = entry.fillableFields.way.meta.map(({ id, name }) => (
     <RadioButton name={formDataWayFieldName} value={id} key={id} defaultValue={selectedWay === id}>

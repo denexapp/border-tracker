@@ -17,9 +17,7 @@ import FieldComponentWrapper from "./fieldComponentWrapper";
 
 const Direction: FieldComponent = async (props) => {
   const { entry } = props;
-
   const setEntryDirection = updateEntryDirectionAndRevalidate.bind(null, entry.id);
-
   const entryDirection = entry.fillableFields.direction.value;
   let preselectedDirection: DirectionType;
 
