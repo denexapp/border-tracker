@@ -20,9 +20,9 @@ const Page: FC<PageProps> = async (props) => {
   const entry = await getEntry(entryId);
 
   return (
-    <div className="flex flex-col gap-2 items-center justify-center p-2">
+    <div className="flex flex-col gap-4 items-center justify-center p-6">
       <ViewTransition name={"h1-transition"}>
-        <H1 className="py-2">entry</H1>
+        <H1>entry</H1>
       </ViewTransition>
       <ViewTransition name={`entry-transition-${entry.id}`}>
         <EntryComponent entry={entry} className="max-w-xl w-full" />

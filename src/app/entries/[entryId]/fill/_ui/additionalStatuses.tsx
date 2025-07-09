@@ -4,6 +4,8 @@ import H1 from "@/shared/ui/components/text/h1";
 import ViewTransition from "@/shared/ui/components/viewTransition";
 import updateEntryAdditionalStatusesAndRevalidate from "../_api/updateEntryAdditionalStatusesAndRedirectToEntry";
 import { FieldComponent } from "../_lib/fieldComponent";
+import FieldComponentContent from "./fieldComponentContent";
+import FieldComponentWrapper from "./fieldComponentWrapper";
 
 const AdditionalStatuses: FieldComponent = async (props) => {
   const { entry } = props;
@@ -18,19 +20,17 @@ const AdditionalStatuses: FieldComponent = async (props) => {
   ));
 
   return (
-    <div className="flex flex-col gap-6 items-center">
+    <FieldComponentWrapper>
       <ViewTransition name={"h1-transition"}>
         <H1>select additional statuses</H1>
       </ViewTransition>
-      <div className="flex flex-col gap-4">
-        <form className="contents" action={setEntryAdditionalStatuses}>
-          {statuses}
-          <ViewTransition name={"action-button-1-transition"}>
-            <ButtonSubmit>confirm additional statuses</ButtonSubmit>
-          </ViewTransition>
-        </form>
-      </div>
-    </div>
+      <form className="contents" action={setEntryAdditionalStatuses}>
+        <FieldComponentContent>{statuses}</FieldComponentContent>
+        <ViewTransition name={"action-button-1-transition"}>
+          <ButtonSubmit>confirm additional statuses</ButtonSubmit>
+        </ViewTransition>
+      </form>
+    </FieldComponentWrapper>
   );
 };
 

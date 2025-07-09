@@ -9,6 +9,8 @@ import H1 from "@/shared/ui/components/text/h1";
 import ViewTransition from "@/shared/ui/components/viewTransition";
 import updateEntryRegionAndRevalidate from "../_api/updateEntryRegionAndRevalidate";
 import { FieldComponent } from "../_lib/fieldComponent";
+import FieldComponentWrapper from "./fieldComponentWrapper";
+import FieldComponentContent from "./fieldComponentContent";
 
 const Region: FieldComponent = async (props) => {
   const { entry } = props;
@@ -24,19 +26,19 @@ const Region: FieldComponent = async (props) => {
     );
 
   return (
-    <div className="flex flex-col gap-6 items-center">
+    <FieldComponentWrapper>
       <ViewTransition name={"h1-transition"}>
         <H1>choose region</H1>
       </ViewTransition>
-      <div className="flex flex-col gap-4">
-        <form className="contents" action={setEntryRegion}>
+      <form className="contents" action={setEntryRegion}>
+        <FieldComponentContent>
           <Select name={formDataRegionFieldName} required defaultValue={defaultValue} entries={entries} />
-          <ViewTransition name={"action-button-1-transition"}>
-            <ButtonSubmit>confirm region</ButtonSubmit>
-          </ViewTransition>
-        </form>
-      </div>
-    </div>
+        </FieldComponentContent>
+        <ViewTransition name={"action-button-1-transition"}>
+          <ButtonSubmit>confirm region</ButtonSubmit>
+        </ViewTransition>
+      </form>
+    </FieldComponentWrapper>
   );
 };
 

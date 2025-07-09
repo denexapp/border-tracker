@@ -6,6 +6,8 @@ import ViewTransition from "@/shared/ui/components/viewTransition";
 import updateEntryDateAndRevalidate from "../_api/updateEntryDateAndRevalidate";
 import { formDataDateFieldName } from "../_lib/consts";
 import { FieldComponent } from "../_lib/fieldComponent";
+import FieldComponentContent from "./fieldComponentContent";
+import FieldComponentWrapper from "./fieldComponentWrapper";
 
 const Date: FieldComponent = async (props) => {
   const { entry } = props;
@@ -14,19 +16,19 @@ const Date: FieldComponent = async (props) => {
   const defaultValue = entry.fillableFields.date.value ?? (await estimateUserDate()) ?? undefined;
 
   return (
-    <div className="flex flex-col gap-6 items-center">
+    <FieldComponentWrapper>
       <ViewTransition name={"h1-transition"}>
         <H1>specify entry date</H1>
       </ViewTransition>
-      <div className="flex flex-col gap-4">
-        <form className="contents" action={setEntryDate}>
+      <form className="contents" action={setEntryDate}>
+        <FieldComponentContent>
           <DatePicker name={formDataDateFieldName} required defaultValue={defaultValue} />
-          <ViewTransition name={"action-button-1-transition"}>
-            <ButtonSubmit>confirm entry date</ButtonSubmit>
-          </ViewTransition>
-        </form>
-      </div>
-    </div>
+        </FieldComponentContent>
+        <ViewTransition name={"action-button-1-transition"}>
+          <ButtonSubmit>confirm entry date</ButtonSubmit>
+        </ViewTransition>
+      </form>
+    </FieldComponentWrapper>
   );
 };
 

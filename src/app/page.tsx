@@ -24,13 +24,13 @@ const Page: FC = async () => {
   }
 
   return (
-    <div className="flex flex-col gap-2 items-center justify-center p-2">
+    <div className="flex flex-col gap-4 items-center justify-center p-6">
       <ViewTransition name={"h1-transition"}>
-        <H1 className="py-2">entries</H1>
+        <H1>entries</H1>
       </ViewTransition>
-      <div className="flex gap-2 items-center w-full flex-col-reverse">
+      <div className="flex gap-4 items-center w-full flex-col-reverse">
         <ViewTransition name={"action-button-1-transition"}>
-          <ButtonForm className="sticky bottom-2" onClick={addEntryAndRedirect}>
+          <ButtonForm className="sticky bottom-6" onClick={addEntryAndRedirect}>
             add new entry
           </ButtonForm>
         </ViewTransition>

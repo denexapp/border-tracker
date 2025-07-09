@@ -6,6 +6,8 @@ import ViewTransition from "@/shared/ui/components/viewTransition";
 import updateEntryNumberAndRevalidate from "../_api/updateEntryNumberAndRevalidate";
 import { formDataNumberFieldName, startingEntryNumber } from "../_lib/consts";
 import { FieldComponent } from "../_lib/fieldComponent";
+import FieldComponentContent from "./fieldComponentContent";
+import FieldComponentWrapper from "./fieldComponentWrapper";
 
 const Number: FieldComponent = async (props) => {
   const { entry } = props;
@@ -21,19 +23,19 @@ const Number: FieldComponent = async (props) => {
   }
 
   return (
-    <div className="flex flex-col gap-6 items-center">
+    <FieldComponentWrapper>
       <ViewTransition name={"h1-transition"}>
         <H1>specify entry number</H1>
       </ViewTransition>
-      <div className="flex flex-col gap-4">
-        <form className="contents" action={setEntryNumber}>
+      <form className="contents" action={setEntryNumber}>
+        <FieldComponentContent>
           <NumberInput min={startingEntryNumber} name={formDataNumberFieldName} required defaultValue={defaultValue} />
-          <ViewTransition name={"action-button-1-transition"}>
-            <ButtonSubmit>confirm entry number</ButtonSubmit>
-          </ViewTransition>
-        </form>
-      </div>
-    </div>
+        </FieldComponentContent>
+        <ViewTransition name={"action-button-1-transition"}>
+          <ButtonSubmit>confirm entry number</ButtonSubmit>
+        </ViewTransition>
+      </form>
+    </FieldComponentWrapper>
   );
 };
 

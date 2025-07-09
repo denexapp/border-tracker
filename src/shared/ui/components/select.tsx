@@ -29,7 +29,7 @@ const Select: FC<SelectProps> = (props) => {
 
   return (
     <select
-      className="appearance-none cursor-pointer text-base font-medium bg-primary-bg hover:bg-primary-bg-hover active:bg-primary-bg-active motion-safe:active:scale-95 motion-safe:transition focus-visible:outline-2 outline-outline outline-offset-2 text-primary-content py-3 px-6 rounded-2xl"
+      className="appearance-none overflow-ellipsis overflow-hidden cursor-pointer text-base font-medium bg-primary-bg hover:bg-primary-bg-hover active:bg-primary-bg-active motion-safe:active:scale-95 motion-safe:transition focus-visible:outline-2 outline-outline outline-offset-2 text-primary-content py-3 px-6 rounded-2xl"
       required={required}
       name={name}
       defaultValue={validatedDefaultValue}

@@ -43,7 +43,7 @@ const Page: FC<PageProps> = async (props) => {
     content = <FieldComponent entry={entry} />;
   }
 
-  return <div className="grid place-items-center p-2">{content}</div>;
+  return <div className="grid place-items-center p-6">{content}</div>;
 };
 
 export default Page;

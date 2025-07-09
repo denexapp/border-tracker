@@ -5,6 +5,8 @@ import ViewTransition from "@/shared/ui/components/viewTransition";
 import updateEntryWayAndRevalidate from "../_api/updateEntryWayAndRevalidate";
 import { formDataWayFieldName } from "../_lib/consts";
 import { FieldComponent } from "../_lib/fieldComponent";
+import FieldComponentContent from "./fieldComponentContent";
+import FieldComponentWrapper from "./fieldComponentWrapper";
 
 const Way: FieldComponent = async (props) => {
   const { entry } = props;
@@ -19,19 +21,17 @@ const Way: FieldComponent = async (props) => {
   ));
 
   return (
-    <div className="flex flex-col gap-6 items-center">
+    <FieldComponentWrapper>
       <ViewTransition name={"h1-transition"}>
         <H1>choose way</H1>
       </ViewTransition>
-      <div className="flex flex-col gap-4">
-        <form className="contents" action={setEntryWay}>
-          {ways}
-          <ViewTransition name={"action-button-1-transition"}>
-            <ButtonSubmit>confirm way</ButtonSubmit>
-          </ViewTransition>
-        </form>
-      </div>
-    </div>
+      <form className="contents" action={setEntryWay}>
+        <FieldComponentContent>{ways}</FieldComponentContent>
+        <ViewTransition name={"action-button-1-transition"}>
+          <ButtonSubmit>confirm way</ButtonSubmit>
+        </ViewTransition>
+      </form>
+    </FieldComponentWrapper>
   );
 };
 
