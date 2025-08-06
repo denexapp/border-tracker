@@ -1,6 +1,7 @@
 import notion from "@/shared/notion/api/client";
+import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
-const retrievePageWithProperties = async (id: string) => {
+const retrievePage = async (id: string): Promise<PageObjectResponse> => {
   const page = await notion.pages.retrieve({
     page_id: id,
   });
@@ -12,4 +13,4 @@ const retrievePageWithProperties = async (id: string) => {
   return page;
 };
 
-export default retrievePageWithProperties;
+export default retrievePage;

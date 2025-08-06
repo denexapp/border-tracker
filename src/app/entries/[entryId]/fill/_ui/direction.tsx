@@ -1,4 +1,4 @@
-import { getLastEntry } from "@/entities/entry/api/getLastEntry";
+import { getEntryByNumber } from "@/entities/entry/api/getEntryByNumber";
 import {
   Direction as DirectionType,
   directionArrival,
@@ -18,18 +18,19 @@ import FieldComponentWrapper from "./fieldComponentWrapper";
 const Direction: FieldComponent = async (props) => {
   const { entry } = props;
   const setEntryDirection = updateEntryDirectionAndRevalidate.bind(null, entry.id);
+  const entryNumber = entry.fillableFields.number.value;
   const entryDirection = entry.fillableFields.direction.value;
   let preselectedDirection: DirectionType;
 
   if (entryDirection !== null) {
     preselectedDirection = entryDirection;
-  } else {
-    const lastEntry = await getLastEntry();
-    const lastEntryDirection = lastEntry?.fillableFields.direction.value ?? null;
+  } else if (entryNumber !== null) {
+    const previousEntry = await getEntryByNumber(entryNumber - 1);
+    const previousEntryDirection = previousEntry?.fillableFields.direction.value ?? null;
 
-    if (lastEntryDirection === "arrival") {
+    if (previousEntryDirection === "arrival") {
       preselectedDirection = directionDeparture;
-    } else if (lastEntryDirection === "departure") {
+    } else if (previousEntryDirection === "departure") {
       preselectedDirection = directionArrival;
     } else {
       preselectedDirection = defaultDirection;

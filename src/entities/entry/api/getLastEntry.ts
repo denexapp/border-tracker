@@ -1,11 +1,10 @@
-import queryPaginatedDatabasePages from "@/shared/notion/api/queryPaginatedDatabasePages";
+import queryDatabasePage from "@/shared/notion/api/queryDatabasePage";
 import { databaseIdBorderCrossings, propertyNameNumber } from "../config/consts";
 import { Entry } from "../model/entry/entry";
 import { entryFromPage } from "../model/entry/entryFromPage";
 
 export const getLastEntry = async (): Promise<Entry | null> => {
-  const entryPages = await queryPaginatedDatabasePages(databaseIdBorderCrossings, {
-    limit: 1,
+  const lastEntryPage = await queryDatabasePage(databaseIdBorderCrossings, {
     sorts: [
       {
         property: propertyNameNumber,
@@ -18,9 +17,7 @@ export const getLastEntry = async (): Promise<Entry | null> => {
     ],
   });
 
-  const lastEntryPage = entryPages.at(0);
-
-  if (lastEntryPage === undefined) {
+  if (lastEntryPage === null) {
     return null;
   }
 

@@ -7,15 +7,25 @@ import { formDataWayFieldName } from "../_lib/consts";
 import { FieldComponent } from "../_lib/fieldComponent";
 import FieldComponentContent from "./fieldComponentContent";
 import FieldComponentWrapper from "./fieldComponentWrapper";
-import { getLastEntry } from "@/entities/entry/api/getLastEntry";
+import { getEntryByNumber } from "@/entities/entry/api/getEntryByNumber";
 
 const Way: FieldComponent = async (props) => {
   const { entry } = props;
+  const entryNumber = entry.fillableFields.number.value;
+  const entryWay = entry.fillableFields.way.value;
   const setEntryWay = updateEntryWayAndRevalidate.bind(null, entry.id);
-  const selectedWay = entry.fillableFields.way.value ?? (await getLastEntry())?.fillableFields.way.value ?? null;
+
+  let preselectedWay: string | null;
+
+  if (entryWay !== null) {
+    preselectedWay = entryWay;
+  } else if (entryNumber !== null) {
+    const previousEntry = await getEntryByNumber(entryNumber - 1);
+    preselectedWay = previousEntry?.fillableFields.way.value ?? null;
+  }
 
   const ways = entry.fillableFields.way.meta.map(({ id, name }) => (
-    <RadioButton name={formDataWayFieldName} value={id} key={id} defaultValue={selectedWay === id}>
+    <RadioButton name={formDataWayFieldName} value={id} key={id} defaultValue={preselectedWay === id}>
       {name}
     </RadioButton>
   ));

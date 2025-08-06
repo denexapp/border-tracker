@@ -2,12 +2,13 @@ import notion from "@/shared/notion/api/client";
 import { PageObjectResponse, QueryDatabaseParameters } from "@notionhq/client/build/src/api-endpoints";
 
 interface Options {
+  filter?: QueryDatabaseParameters["filter"];
   sorts?: QueryDatabaseParameters["sorts"];
   limit?: number;
 }
 
-const queryPaginatedDatabasePages = async (databaseId: string, options?: Options) => {
-  const { sorts, limit } = options ?? {};
+const queryDatabasePages = async (databaseId: string, options?: Options) => {
+  const { sorts, limit, filter } = options ?? {};
 
   const results: Array<PageObjectResponse> = [];
   let hasMore = true;
@@ -20,6 +21,7 @@ const queryPaginatedDatabasePages = async (databaseId: string, options?: Options
       start_cursor: startCursor ?? undefined,
       sorts,
       page_size: limit,
+      filter,
     });
 
     hasMore = response.has_more;
@@ -43,4 +45,4 @@ const queryPaginatedDatabasePages = async (databaseId: string, options?: Options
   return results;
 };
 
-export default queryPaginatedDatabasePages;
+export default queryDatabasePages;
