@@ -41,7 +41,7 @@ const Direction: FieldComponent = async (props) => {
     <RadioButton
       key={direction}
       name={formDataDirectionFieldName}
-      value={directionArrival}
+      value={direction}
       defaultValue={preselectedDirection === direction}
     >
       {direction === directionArrival ? "arrival" : "departure"}
