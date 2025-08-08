@@ -11,11 +11,32 @@ import updateEntryRegionAndRevalidate from "../_api/updateEntryRegionAndRevalida
 import { FieldComponent } from "../_lib/fieldComponent";
 import FieldComponentWrapper from "./fieldComponentWrapper";
 import FieldComponentContent from "./fieldComponentContent";
+import { getEntryByNumber } from "@/entities/entry/api/getEntryByNumber";
 
 const Region: FieldComponent = async (props) => {
   const { entry } = props;
-  const setEntryRegion = updateEntryRegionAndRevalidate.bind(null, entry.id);
-  const defaultValue = entry.fillableFields.region.value?.code ?? (await estimateUserRegion())?.code;
+
+  const {
+    region: { value: entryRegion },
+    number: { value: entryNumber },
+  } = entry.fillableFields;
+
+  let defaultValue = entryRegion?.code ?? undefined;
+
+  if (defaultValue === undefined) {
+    let previousRegionCode: string | undefined;
+
+    if (entryNumber !== null) {
+      const previousEntry = await getEntryByNumber(entryNumber - 1);
+
+      if (previousEntry?.fillableFields.direction.value === "arrival") {
+        previousRegionCode = previousEntry?.fillableFields.region.value?.code;
+      }
+    }
+
+    defaultValue = previousRegionCode ?? (await estimateUserRegion())?.code;
+  }
+
   const entries = getAllRegions()
     .sort((a, b) => a.name.localeCompare(b.name, locale))
     .map<SelectEntry>(
@@ -24,6 +45,8 @@ const Region: FieldComponent = async (props) => {
         label: `${emoji} ${name}`,
       })
     );
+
+  const setEntryRegion = updateEntryRegionAndRevalidate.bind(null, entry.id);
 
   return (
     <FieldComponentWrapper>
